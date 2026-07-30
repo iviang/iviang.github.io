@@ -43,6 +43,11 @@
   --measure: 68ch;
   --content-width: 62rem;
   --transition-fast: 120ms ease;
+
+  /* The embedded demo needs more width than the reading column and enough height to show
+     its sidebar plus a full draft without inner scrolling on a normal laptop. */
+  --demo-width: 74rem;
+  --demo-frame-height: clamp(30rem, 78vh, 52rem);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -239,6 +244,64 @@ main,
   padding: 0 var(--space-2xs);
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius-sm);
+}
+
+/* Demo */
+.demo {
+  margin: var(--space-lg) 0 0;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  overflow: hidden;
+}
+
+/*
+  The demo needs more width than the reading column, so it breaks out of the page's content
+  width with negative margins. Gated behind a width query rather than clamped arithmetic:
+  the breakout only applies once the viewport is genuinely wider than --demo-width, so a
+  narrow screen gets no bleed and the page never scrolls sideways.
+*/
+@media (min-width: 78rem) {
+  .demo { margin-inline: calc((var(--demo-width) - var(--content-width)) / -2); }
+}
+
+.demo__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.demo__label { font-size: var(--size-step--1); font-weight: 600; }
+
+.demo__badge {
+  font-family: var(--font-mono);
+  font-size: var(--size-step--1);
+  font-weight: 400;
+  margin-left: var(--space-2xs);
+  padding: 0 var(--space-2xs);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+}
+
+.demo__open { font-size: var(--size-step--1); }
+
+.demo__frame {
+  display: block;
+  width: 100%;
+  height: var(--demo-frame-height);
+  border: 0;
+}
+
+.demo__caption {
+  padding: var(--space-sm) var(--space-md);
+  border-top: var(--border-width) solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: var(--size-step--1);
 }
 
 .site-footer {

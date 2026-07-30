@@ -21,6 +21,7 @@
       <a class="nav__brand" href="#main">VN</a>
       <ul class="nav__list">
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#demo">Demo</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -57,6 +58,50 @@
       <p id="projects-status" class="status" role="status" aria-live="polite">Loading projects...</p>
 
       <ul id="projects-list" class="project-grid"></ul>
+    </section>
+
+    <section id="demo" class="section">
+      <div class="section__head">
+        <h2 class="section__title">Demo</h2>
+        <p class="section__note">
+          LinkedIn Blogger, running below on mock data. Click through it: nothing leaves the page.
+        </p>
+      </div>
+
+      <div class="prose">
+        <p>
+          A tool that drafts LinkedIn posts from my own work logs and holds them for review. It only
+          summarises what is actually in the logs, so it cannot invent an accomplishment I did not
+          record, and it never publishes on its own. Approval is always a human step.
+        </p>
+      </div>
+
+      <figure class="demo">
+        <div class="demo__bar">
+          <p class="demo__label">
+            LinkedIn Blogger <span class="demo__badge">demo build</span>
+          </p>
+          <a class="demo__open" href="https://iviang.github.io/linkedin-blogger/demo.html"
+             target="_blank" rel="noopener">Open in its own tab</a>
+        </div>
+
+        <!--
+          Framed rather than copied in: the demo is hosted from the linkedin-blogger repo, so
+          it stays one source of truth and this page never holds a stale duplicate of it.
+          loading="lazy" keeps its 109KB off the initial page load.
+        -->
+        <iframe class="demo__frame"
+                src="https://iviang.github.io/linkedin-blogger/demo.html"
+                title="LinkedIn Blogger interactive demo"
+                loading="lazy"></iframe>
+
+        <figcaption class="demo__caption">
+          This build answers its own API calls with mock data. Nothing is sent to LinkedIn, no AI
+          model is called, and a refresh resets it. Built for a desktop layout, so it is tight on a
+          phone. Source at
+          <a href="https://github.com/iviang/linkedin-blogger" rel="noopener">github.com/iviang/linkedin-blogger</a>.
+        </figcaption>
+      </figure>
     </section>
 
     <section id="about" class="section">
