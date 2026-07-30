@@ -10,7 +10,13 @@ const CONFIG = {
   username: 'iviang',
 
   // Repos to keep off the site regardless of what the API returns.
-  exclude: [],
+  exclude: [
+    // The repo holding this site. Listing the portfolio as one of its own entries is noise.
+    'iviang.github.io',
+    // Coursework. Ownership of the assignment material is unclear, so it is not showcased.
+    // Note this only hides the card: see the README on making the repo itself private.
+    'CSE-160',
+  ],
 
   // Repos listed here sort to the front, in this order. Everything else follows by
   // most-recently-pushed. Leave empty to sort purely by recency.

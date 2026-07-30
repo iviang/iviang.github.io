@@ -35,6 +35,11 @@ Everything configurable lives in the `CONFIG` object at the top of `js/projects.
 Private repos never appear. The API only returns public ones for an unauthenticated request, which
 is the point: nothing can leak from here.
 
+`exclude` only hides the card. It does not change anything on GitHub, so an excluded repo is still
+public and still reachable at its own URL by anyone who guesses or searches for it. If a repo should
+not be readable at all, the fix is to make the repo itself private in its GitHub settings. Hiding it
+here is presentation, not access control.
+
 ## Change the look
 
 Edit the token block at the top of `css/styles.css`. Colors, spacing, type sizes, and radii are all
