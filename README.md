@@ -63,6 +63,7 @@ There is no build step, so what you push is what gets served.
 
 ## Before this is really done
 
-- Add your LinkedIn URL in `index.html` (the placeholder link is marked).
-- Rewrite the hero and About copy in your own words. What is there now is a starting draft.
 - Add descriptions to your repos on GitHub. Cards without one say so, which is honest but plain.
+- Any link you add by hand needs the `https://` prefix. Without it the browser treats the value as
+  a path on this site, so `www.linkedin.com/in/name` resolves to `iviang.github.io/www.linkedin.com/...`
+  and 404s.
