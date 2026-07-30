@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vivian Nguyen</title>
+  <meta name="description" content="Vivian Nguyen: AI engineering intern. Projects, writing, and contact.">
+
+  <!-- Open Graph tags control how the page looks when shared on LinkedIn, Slack, etc. -->
+  <meta property="og:title" content="Vivian Nguyen">
+  <meta property="og:description" content="AI engineering intern. Projects, writing, and contact.">
+  <meta property="og:type" content="website">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary">
+      <a class="nav__brand" href="#main">VN</a>
+      <ul class="nav__list">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <p class="hero__eyebrow">Vivian Nguyen</p>
+      <h1 class="hero__title">I build data tools that tell the truth about their own gaps.</h1>
+      <p class="hero__lede">
+        AI engineering intern at Kool Quarters, working on data pipelines and the interfaces that
+        sit on top of them. Currently learning how to ship software someone else has to trust.
+      </p>
+      <div class="hero__actions">
+        <a class="button button--primary" href="#projects">See my projects</a>
+        <a class="button" href="https://github.com/iviang" rel="me noopener">GitHub</a>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="section__head">
+        <h2 class="section__title">Projects</h2>
+        <p class="section__note">
+          Pulled live from my public GitHub repositories, most recently updated first.
+        </p>
+      </div>
+
+      <!--
+        aria-live announces load success and failure to screen readers, since the list
+        arrives after first paint rather than being in the HTML.
+      -->
+      <p id="projects-status" class="status" role="status" aria-live="polite">Loading projects...</p>
+
+      <ul id="projects-list" class="project-grid"></ul>
+    </section>
+
+    <section id="about" class="section">
+      <div class="section__head">
+        <h2 class="section__title">About</h2>
+      </div>
+      <div class="prose">
+        <p>
+          I am an AI engineering intern at Kool Quarters, where I work across data pipelines and
+          front ends rather than a single product. Most of what I do comes down to one question:
+          when a number reaches someone who is about to make a decision with it, does that number
+          say where it came from and how sure we are?
+        </p>
+        <p>
+          Before this I studied computer science and worked on data science projects in Python and
+          Jupyter. I am early in my career and I learn in public, which is most of why this page
+          exists.
+        </p>
+        <h3>What I work with</h3>
+        <ul class="tag-list">
+          <li>Python</li>
+          <li>TypeScript</li>
+          <li>React</li>
+          <li>Postgres</li>
+          <li>Pandas</li>
+          <li>Git</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="section__head">
+        <h2 class="section__title">Contact</h2>
+      </div>
+      <div class="prose">
+        <p>The fastest way to reach me is email. I read everything, and I reply to most of it.</p>
+        <ul class="link-list">
+          <li><a href="mailto:vkieu.ngu@gmail.com">vkieu.ngu@gmail.com</a></li>
+          <li><a href="https://github.com/iviang" rel="me noopener">github.com/iviang</a></li>
+          <li><a href="https://www.linkedin.com/in/" rel="me noopener">LinkedIn (add your URL)</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Built by hand, no framework. <a href="https://github.com/iviang" rel="noopener">Source on GitHub</a>.</p>
+  </footer>
+
+  <script src="js/projects.js"></script>
+</body>
+</html>

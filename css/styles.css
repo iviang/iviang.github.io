@@ -1,0 +1,253 @@
+/*
+  Design tokens.
+
+  Every color, space, and size below is named once here and referenced everywhere else.
+  Nothing in this file below the token block should contain a raw hex value or pixel
+  measurement, so a change to the look of the site is a change to one line here.
+*/
+:root {
+  /* Color: light theme is the default, dark is an override further down. */
+  --color-bg: #fbfaf8;
+  --color-surface: #ffffff;
+  --color-border: #e3ded6;
+  --color-text: #1c1a17;
+  --color-text-muted: #6b645b;
+  --color-accent: #9a4a1e;
+  --color-accent-contrast: #ffffff;
+  --color-focus: #2563eb;
+
+  /* Type */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", monospace;
+  --size-step--1: 0.875rem;
+  --size-step-0: 1rem;
+  --size-step-1: 1.25rem;
+  --size-step-2: 1.75rem;
+  --size-step-3: clamp(2rem, 1.4rem + 3vw, 3.25rem);
+  --leading-tight: 1.2;
+  --leading-body: 1.65;
+
+  /* Space: a single ratio-based scale keeps vertical rhythm consistent. */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3.5rem;
+  --space-2xl: 6rem;
+
+  /* Shape */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --border-width: 1px;
+  --measure: 68ch;
+  --content-width: 62rem;
+  --transition-fast: 120ms ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #14120f;
+    --color-surface: #1d1a16;
+    --color-border: #332e27;
+    --color-text: #f2eee7;
+    --color-text-muted: #a49a8c;
+    --color-accent: #e8a06a;
+    --color-accent-contrast: #14120f;
+    --color-focus: #7aa2f7;
+  }
+}
+
+/* Reset */
+*, *::before, *::after { box-sizing: border-box; }
+body, h1, h2, h3, p, ul, figure { margin: 0; padding: 0; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--size-step-0);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--color-accent); text-decoration-thickness: var(--border-width); text-underline-offset: 0.2em; }
+a:hover { text-decoration-thickness: 2px; }
+
+/* One visible focus style for every interactive element, keyboard users included. */
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-xs);
+  top: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transform: translateY(-200%);
+  transition: transform var(--transition-fast);
+  z-index: 10;
+}
+.skip-link:focus { transform: translateY(0); }
+
+/* Layout */
+.site-header,
+main,
+.site-footer {
+  max-width: var(--content-width);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding-block: var(--space-md);
+}
+.nav__brand {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-text);
+  text-decoration: none;
+}
+.nav__list { display: flex; gap: var(--space-md); font-size: var(--size-step--1); }
+.nav__list a { color: var(--color-text-muted); text-decoration: none; }
+.nav__list a:hover { color: var(--color-text); }
+
+.hero { padding-block: var(--space-xl) var(--space-2xl); max-width: var(--measure); }
+.hero__eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--size-step--1);
+  color: var(--color-text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+}
+.hero__title {
+  font-size: var(--size-step-3);
+  line-height: var(--leading-tight);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-md);
+}
+.hero__lede { font-size: var(--size-step-1); color: var(--color-text-muted); }
+.hero__actions { display: flex; flex-wrap: wrap; gap: var(--space-sm); margin-top: var(--space-lg); }
+
+.button {
+  display: inline-block;
+  padding: var(--space-xs) var(--space-md);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--size-step--1);
+  text-decoration: none;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+.button:hover { border-color: var(--color-accent); }
+.button--primary {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-accent-contrast);
+}
+
+.section { padding-block: var(--space-xl); border-top: var(--border-width) solid var(--color-border); }
+.section__head { margin-bottom: var(--space-lg); }
+.section__title { font-size: var(--size-step-2); line-height: var(--leading-tight); letter-spacing: -0.01em; }
+.section__note { color: var(--color-text-muted); font-size: var(--size-step--1); margin-top: var(--space-2xs); }
+
+.prose { max-width: var(--measure); }
+.prose p + p { margin-top: var(--space-md); }
+.prose h3 { font-size: var(--size-step-1); margin-top: var(--space-lg); margin-bottom: var(--space-sm); }
+
+.tag-list { display: flex; flex-wrap: wrap; gap: var(--space-xs); }
+.tag-list li {
+  font-family: var(--font-mono);
+  font-size: var(--size-step--1);
+  padding: var(--space-2xs) var(--space-xs);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+}
+
+.link-list { margin-top: var(--space-md); display: grid; gap: var(--space-xs); }
+
+/* Projects */
+.status { color: var(--color-text-muted); font-size: var(--size-step--1); }
+.status--error { color: var(--color-text); }
+.status[hidden] { display: none; }
+
+.project-grid {
+  display: grid;
+  gap: var(--space-md);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+}
+
+.project {
+  position: relative; /* anchors the full-card click target on .project__title a::after */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-md);
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+.project:hover { border-color: var(--color-accent); transform: translateY(-2px); }
+
+.project__title { font-size: var(--size-step-1); line-height: var(--leading-tight); }
+.project__title a { color: var(--color-text); text-decoration: none; }
+/* Stretch the title link over the whole card so the entire card is one click target. */
+.project__title a::after { content: ""; position: absolute; inset: 0; }
+
+.project__description { color: var(--color-text-muted); font-size: var(--size-step--1); flex: 1; }
+/* Repos with no description on GitHub say so, rather than showing an empty gap. */
+.project__description--empty { font-style: italic; }
+
+.project__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  font-family: var(--font-mono);
+  font-size: var(--size-step--1);
+  color: var(--color-text-muted);
+}
+.project__lang::before {
+  content: "";
+  display: inline-block;
+  width: 0.6em;
+  height: 0.6em;
+  margin-right: var(--space-2xs);
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.project__topics { display: flex; flex-wrap: wrap; gap: var(--space-2xs); }
+.project__topics li {
+  font-size: var(--size-step--1);
+  color: var(--color-text-muted);
+  padding: 0 var(--space-2xs);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.site-footer {
+  padding-block: var(--space-lg) var(--space-xl);
+  border-top: var(--border-width) solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: var(--size-step--1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}

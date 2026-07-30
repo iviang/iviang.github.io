@@ -1,0 +1,14 @@
+# Secrets never belong in this repo. The site is fully static and needs no keys, so if a
+# .env ever appears here, something has gone wrong.
+.env
+.env.*
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Node, only if a tool is added later
+node_modules/
