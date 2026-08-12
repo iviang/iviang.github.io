@@ -297,6 +297,15 @@ main,
   border: 0;
 }
 
+.demo__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* A second demo entry follows the first figure, so its intro needs the same breathing room. */
+.demo + .prose { margin-top: var(--space-lg); }
+
 .demo__caption {
   padding: var(--space-sm) var(--space-md);
   border-top: var(--border-width) solid var(--color-border);

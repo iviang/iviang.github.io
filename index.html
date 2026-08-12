@@ -21,7 +21,7 @@
       <a class="nav__brand" href="#main">VN</a>
       <ul class="nav__list">
         <li><a href="#projects">Projects</a></li>
-        <li><a href="#demo">Demo</a></li>
+        <li><a href="#demo">Demos &amp; builds</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -62,9 +62,9 @@
 
     <section id="demo" class="section">
       <div class="section__head">
-        <h2 class="section__title">Demo</h2>
+        <h2 class="section__title">Demos &amp; builds</h2>
         <p class="section__note">
-          LinkedIn Blogger, running below on mock data. Click through it: nothing leaves the page.
+          LinkedIn Blogger running below on mock data, plus a first look at what I am building now.
         </p>
       </div>
 
@@ -100,6 +100,38 @@
           model is called, and a refresh resets it. Built for a desktop layout, so it is tight on a
           phone. Source at
           <a href="https://github.com/iviang/linkedin-blogger" rel="noopener">github.com/iviang/linkedin-blogger</a>.
+        </figcaption>
+      </figure>
+
+      <div class="prose">
+        <p>
+          A tool that takes a Zillow listing link and returns a verdict on the deal with its
+          reasoning laid out: price cuts, true days on market, and what the listing's history
+          signals. I am building it during my internship at Kool Quarters.
+        </p>
+      </div>
+
+      <figure class="demo">
+        <div class="demo__bar">
+          <p class="demo__label">
+            z-scraper <span class="demo__badge">in development</span>
+          </p>
+        </div>
+
+        <!--
+          A static image on purpose: the product is unreleased, so there is no public build to
+          embed and no repo to link. The mockup's own banner labels every figure as sample data.
+        -->
+        <img class="demo__image"
+             src="img/z-scraper-mockup.png"
+             alt="Design mockup of the z-scraper listing page: a property summary with a verdict card and supporting metrics."
+             width="1280" height="3602"
+             loading="lazy">
+
+        <figcaption class="demo__caption">
+          A static design mockup, not a running app. Every number in it is sample data. The
+          product is in development and not yet released, so there is no public code or live
+          version to link yet.
         </figcaption>
       </figure>
     </section>
