@@ -9,6 +9,8 @@ dependencies. The projects section loads public repositories from the GitHub API
 index.html        Page content and structure
 css/styles.css    Design tokens at the top, everything else references them
 js/projects.js    Fetches and renders the GitHub project cards
+img/              Screenshots used by the Demos section
+files/            Documents linked from the page (the university final project PDF)
 ```
 
 ## Run it locally
