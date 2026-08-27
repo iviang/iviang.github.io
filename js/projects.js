@@ -16,11 +16,15 @@ const CONFIG = {
     // Coursework. Ownership of the assignment material is unclear, so it is not showcased.
     // Note this only hides the card: see the README on making the repo itself private.
     'CSE-160',
+    // Superseded iterations of the IDX streamlit app. v3 is the one worth showing;
+    // three near-identical version cards read as clutter.
+    'IDX-DS26-streamlit-v1',
+    'IDX-DS26-streamlit-v2',
   ],
 
   // Repos listed here sort to the front, in this order. Everything else follows by
   // most-recently-pushed. Leave empty to sort purely by recency.
-  featured: [],
+  featured: ['linkedin-blogger'],
 
   // Forks and archived repos are hidden by default: they are rarely what you want to be
   // judged on. Flip either to true to show them.
