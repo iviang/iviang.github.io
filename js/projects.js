@@ -20,18 +20,26 @@ const CONFIG = {
     // three near-identical version cards read as clutter.
     'IDX-DS26-streamlit-v1',
     'IDX-DS26-streamlit-v2',
+    // GitHub Skills tutorial exercises and the profile README repo. Real activity, but
+    // not work anyone should be judged on.
+    'skills-introduction-to-git',
+    'skills-introduction-to-github',
+    'skills-github-pages',
+    'skills-communicate-using-markdown',
+    'iviang',
   ],
 
   // Repos listed here sort to the front, in this order. Everything else follows by
   // most-recently-pushed. Leave empty to sort purely by recency.
-  featured: ['linkedin-blogger'],
+  featured: ['IDX-Exchange-DS-2026', 'linkedin-blogger'],
 
   // Forks and archived repos are hidden by default: they are rarely what you want to be
   // judged on. Flip either to true to show them.
   showForks: false,
   showArchived: false,
 
-  maxProjects: 12,
+  // The hand-written Selected work section carries the story; this strip is the overflow.
+  maxProjects: 6,
 };
 
 const listEl = document.getElementById('projects-list');

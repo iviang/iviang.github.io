@@ -1,16 +1,17 @@
 # Personal site
 
 Static personal site for Vivian Nguyen. Plain HTML, CSS, and JavaScript, no build step and no
-dependencies. The projects section loads public repositories from the GitHub API at page load.
+dependencies. The Selected work section is written by hand in `index.html`; the "More on GitHub"
+strip below it loads public repositories from the GitHub API at page load.
 
 ## Files
 
 ```
-index.html        Page content and structure
+index.html        Page content and structure, including the hand-written Selected work cards
 css/styles.css    Design tokens at the top, everything else references them
-js/projects.js    Fetches and renders the GitHub project cards
-img/              Screenshots used by the Demos section
-files/            Documents linked from the page (the university final project PDF)
+js/projects.js    Fetches and renders the "More on GitHub" cards
+img/              Favicon, share image (og-image.png), and the z-scraper screenshot
+files/            Documents linked from the page: resume.pdf and the university final project PDF
 ```
 
 ## Run it locally
@@ -24,7 +25,14 @@ python -m http.server 8000
 
 Then visit http://localhost:8000
 
-## Change what shows in Projects
+## Change the Selected work cards
+
+Each card is a `<li class="work">` in `index.html`: a title, a row of tags, a description, an
+optional note, links, and an optional `<details class="work__demo">` that folds out an iframe or a
+screenshot. Copy an existing card to add one. Cards are ordered by hand, so put the strongest
+first.
+
+## Change what shows in More on GitHub
 
 Everything configurable lives in the `CONFIG` object at the top of `js/projects.js`:
 
@@ -48,6 +56,13 @@ Edit the token block at the top of `css/styles.css`. Colors, spacing, type sizes
 named there and referenced everywhere else, so changing `--color-accent` in one place changes every
 accent on the page. Dark mode is a second token block that overrides the colors under
 `prefers-color-scheme: dark`.
+
+## Update the resume or the share image
+
+- Resume: replace `files/resume.pdf`. Both the hero button and the Contact link point at it.
+- Share image: `img/og-image.png` is what LinkedIn and Slack show for a link to the site. It is
+  generated from the design tokens with Pillow; regenerate it if the hero line or colors change.
+  The favicon is `img/favicon.svg` with `img/apple-touch-icon.png` for iOS.
 
 ## Deploy to GitHub Pages
 

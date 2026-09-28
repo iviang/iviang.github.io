@@ -12,3 +12,6 @@ desktop.ini
 
 # Node, only if a tool is added later
 node_modules/
+
+# Brainstorming companion sessions (mockups, never site content)
+.superpowers/

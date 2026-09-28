@@ -4,12 +4,32 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Vivian Nguyen</title>
-  <meta name="description" content="Vivian Nguyen: AI engineering intern. Projects, writing, and contact.">
+  <meta name="description" content="Vivian Nguyen: AI engineering intern at Kool Quarters. Selected work, demos, resume, and contact.">
+  <link rel="canonical" href="https://iviang.github.io/">
 
-  <!-- Open Graph tags control how the page looks when shared on LinkedIn, Slack, etc. -->
+  <!--
+    GitHub Pages sets no security headers beyond HSTS, so the content security policy lives
+    here. Everything is same-origin except the GitHub API call and the framed demo.
+  -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; connect-src https://api.github.com; frame-src https://iviang.github.io; object-src 'none'; base-uri 'self'; form-action 'none'">
+
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+  <!--
+    Open Graph tags control how the page looks when shared on LinkedIn, Slack, etc.
+    og:image has to be an absolute URL, which is why it is not written like the other paths.
+  -->
   <meta property="og:title" content="Vivian Nguyen">
-  <meta property="og:description" content="AI engineering intern. Projects, writing, and contact.">
+  <meta property="og:description" content="AI engineering intern at Kool Quarters. Selected work, demos, resume, and contact.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://iviang.github.io/">
+  <meta property="og:image" content="https://iviang.github.io/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Vivian K. Nguyen. I build data tools that tell the truth about their own gaps.">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -20,10 +40,11 @@
     <nav class="nav" aria-label="Primary">
       <a class="nav__brand" href="#main">VN</a>
       <ul class="nav__list">
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#demo">Demos &amp; builds</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#github">GitHub</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li><a href="files/resume.pdf">Resume</a></li>
       </ul>
     </nav>
   </header>
@@ -33,21 +54,158 @@
       <p class="hero__eyebrow">Vivian K. Nguyen</p>
       <h1 class="hero__title">I build data tools that tell the truth about their own gaps.</h1>
       <p class="hero__lede">
-        AI engineering intern at Kool Quarters, Data Scientist intern at IDX Exchange, working on data
-        pipelines and the interfaces that sit on top of them. Currently learning how to ship software
-        and justify design choices for stakeholders.
+        AI engineering intern at Kool Quarters, building a listing-analysis tool that says
+        &ldquo;not reported&rdquo; when the data cannot back a number. Before that, a data science
+        internship at IDX Exchange predicting what California homes actually sell for. Learning to
+        ship software and defend design choices to stakeholders.
       </p>
       <div class="hero__actions">
-        <a class="button button--primary" href="#projects">See my projects</a>
+        <a class="button button--primary" href="#work">See my work</a>
+        <a class="button" href="files/resume.pdf">Resume (PDF)</a>
         <a class="button" href="https://github.com/iviang" rel="me noopener">GitHub</a>
       </div>
     </section>
 
-    <section id="projects" class="section">
+    <section id="work" class="section">
       <div class="section__head">
-        <h2 class="section__title">Projects</h2>
+        <h2 class="section__title">Selected work</h2>
         <p class="section__note">
-          Pulled live from my public GitHub repositories, most recently updated first.
+          The four things I would show first. Two of them fold out into a live demo or a screenshot.
+        </p>
+      </div>
+
+      <ul class="work-list">
+        <li class="work">
+          <div class="work__head">
+            <h3 class="work__title">z-scraper</h3>
+            <p class="work__tags">
+              <span>Kool Quarters</span>
+              <span>2026</span>
+              <span class="work__tag--status">in development</span>
+            </p>
+          </div>
+          <p class="work__description">
+            Paste a Zillow listing link and get a verdict on the deal with the reasoning laid out:
+            price cuts, true days on market, and what the listing's history signals. Numbers the
+            models cannot yet stand behind say &ldquo;not reported&rdquo; and give the reason,
+            instead of a confident guess.
+          </p>
+          <p class="work__note">
+            Unreleased, so there is no public code or live version to link yet.
+          </p>
+          <details class="work__demo">
+            <summary>Show a screenshot of the development build</summary>
+            <figure class="demo">
+              <!--
+                A static image on purpose: the product is unreleased, so there is no public build
+                to embed. The app's own banner labels every figure as sample data.
+              -->
+              <img class="demo__image"
+                   src="img/z-scraper-screenshot.png"
+                   alt="Screenshot of the z-scraper listing page: a property summary, map, verdict card, and supporting metrics computed from a sample listing."
+                   width="1280" height="3286"
+                   loading="lazy">
+              <figcaption class="demo__caption">
+                The development build running on its built-in sample listing, so every figure is
+                invented data. Numbers the models cannot yet stand behind say
+                &ldquo;not reported&rdquo; and give the reason.
+              </figcaption>
+            </figure>
+          </details>
+        </li>
+
+        <li class="work">
+          <div class="work__head">
+            <h3 class="work__title">California close-price model</h3>
+            <p class="work__tags">
+              <span>IDX Exchange</span>
+              <span>Data science intern</span>
+              <span>2026</span>
+            </p>
+          </div>
+          <p class="work__description">
+            Predicts the final sale price of a single-family home in California from CRMLS sold
+            records. Six notebooks take the data from exploration through preprocessing, baselines,
+            gradient-boosted models, and a full metric suite. The deployed app switches between two
+            finalists: LightGBM on a log target for the luxury tail, and a ridge-stacked ensemble
+            for mid-market homes.
+          </p>
+          <p class="work__note">
+            The Streamlit app is deployed privately, so its source is linked instead.
+          </p>
+          <ul class="work__links">
+            <li><a href="https://github.com/iviang/IDX-Exchange-DS-2026" rel="noopener">Model notebooks on GitHub</a></li>
+            <li><a href="https://github.com/iviang/IDX-DS26-streamlit-v3" rel="noopener">Streamlit app source</a></li>
+          </ul>
+        </li>
+
+        <li class="work">
+          <div class="work__head">
+            <h3 class="work__title">LinkedIn Blogger</h3>
+            <p class="work__tags">
+              <span>Personal tool</span>
+              <span>2026</span>
+              <span class="work__tag--status">live demo</span>
+            </p>
+          </div>
+          <p class="work__description">
+            Drafts LinkedIn posts from my own work logs and holds them for review. It only
+            summarises what is actually in the logs, so it cannot invent an accomplishment I did
+            not record, and it never publishes on its own. Approval is always a human step.
+          </p>
+          <ul class="work__links">
+            <li><a href="https://iviang.github.io/linkedin-blogger/demo.html" target="_blank" rel="noopener">Open the demo in its own tab</a></li>
+            <li><a href="https://github.com/iviang/linkedin-blogger" rel="noopener">Source on GitHub</a></li>
+          </ul>
+          <details class="work__demo">
+            <summary>Show the interactive demo here</summary>
+            <figure class="demo">
+              <!--
+                Framed rather than copied in: the demo is hosted from the linkedin-blogger repo, so
+                it stays one source of truth and this page never holds a stale duplicate of it.
+                loading="lazy" plus the closed details keeps its 109KB off the initial page load.
+              -->
+              <iframe class="demo__frame"
+                      src="https://iviang.github.io/linkedin-blogger/demo.html"
+                      title="LinkedIn Blogger interactive demo"
+                      loading="lazy"></iframe>
+              <figcaption class="demo__caption">
+                This build answers its own API calls with mock data. Nothing is sent to LinkedIn,
+                no AI model is called, and a refresh resets it. Built for a desktop layout, so it
+                is tight on a phone.
+              </figcaption>
+            </figure>
+          </details>
+        </li>
+
+        <li class="work">
+          <div class="work__head">
+            <h3 class="work__title">Brotein</h3>
+            <p class="work__tags">
+              <span>Side project</span>
+              <span class="work__tag--status">live</span>
+            </p>
+          </div>
+          <p class="work__description">
+            Find high-protein recipes from the ingredients already in your kitchen, with smart
+            substitutions, allergy filters, real nutrition numbers, and a soft spot for Asian
+            cooking. Built with Next.js, TypeScript, and Tailwind, deployed on Vercel.
+          </p>
+          <p class="work__note">
+            The source is private, so the live site is the whole story.
+          </p>
+          <ul class="work__links">
+            <li><a href="https://brotein-sepia.vercel.app" rel="noopener">Visit brotein-sepia.vercel.app</a></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section id="github" class="section">
+      <div class="section__head">
+        <h2 class="section__title">More on GitHub</h2>
+        <p class="section__note">
+          Pulled live from my public repositories, most recently pushed first.
         </p>
       </div>
 
@@ -55,101 +213,9 @@
         aria-live announces load success and failure to screen readers, since the list
         arrives after first paint rather than being in the HTML.
       -->
-      <p id="projects-status" class="status" role="status" aria-live="polite">Loading projects...</p>
+      <p id="projects-status" class="status" role="status" aria-live="polite">Loading repositories...</p>
 
       <ul id="projects-list" class="project-grid"></ul>
-    </section>
-
-    <section id="demo" class="section">
-      <div class="section__head">
-        <h2 class="section__title">Demos &amp; builds</h2>
-        <p class="section__note">
-          LinkedIn Blogger running below on mock data, a first look at what I am building now,
-          and the university project that came before both.
-        </p>
-      </div>
-
-      <div class="prose">
-        <p>
-          A tool that drafts LinkedIn posts from my own work logs and holds them for review. It only
-          summarises what is actually in the logs, so it cannot invent an accomplishment I did not
-          record, and it never publishes on its own. Approval is always a human step.
-        </p>
-      </div>
-
-      <figure class="demo">
-        <div class="demo__bar">
-          <p class="demo__label">
-            LinkedIn Blogger <span class="demo__badge">demo build</span>
-          </p>
-          <a class="demo__open" href="https://iviang.github.io/linkedin-blogger/demo.html"
-             target="_blank" rel="noopener">Open in its own tab</a>
-        </div>
-
-        <!--
-          Framed rather than copied in: the demo is hosted from the linkedin-blogger repo, so
-          it stays one source of truth and this page never holds a stale duplicate of it.
-          loading="lazy" keeps its 109KB off the initial page load.
-        -->
-        <iframe class="demo__frame"
-                src="https://iviang.github.io/linkedin-blogger/demo.html"
-                title="LinkedIn Blogger interactive demo"
-                loading="lazy"></iframe>
-
-        <figcaption class="demo__caption">
-          This build answers its own API calls with mock data. Nothing is sent to LinkedIn, no AI
-          model is called, and a refresh resets it. Built for a desktop layout, so it is tight on a
-          phone. Source at
-          <a href="https://github.com/iviang/linkedin-blogger" rel="noopener">github.com/iviang/linkedin-blogger</a>.
-        </figcaption>
-      </figure>
-
-      <div class="prose">
-        <p>
-          A tool that takes a Zillow listing link and returns a verdict on the deal with its
-          reasoning laid out: price cuts, true days on market, and what the listing's history
-          signals. I am building it during my internship at Kool Quarters.
-        </p>
-      </div>
-
-      <figure class="demo">
-        <div class="demo__bar">
-          <p class="demo__label">
-            z-scraper <span class="demo__badge">in development</span>
-          </p>
-        </div>
-
-        <!--
-          A static image on purpose: the product is unreleased, so there is no public build to
-          embed and no repo to link. The app's own banner labels every figure as sample data.
-        -->
-        <img class="demo__image"
-             src="img/z-scraper-screenshot.png"
-             alt="Screenshot of the z-scraper listing page: a property summary, map, verdict card, and supporting metrics computed from a sample listing."
-             width="1280" height="3286"
-             loading="lazy">
-
-        <figcaption class="demo__caption">
-          A screenshot of the development build running on its built-in sample listing, so every
-          figure is invented data. Numbers the models cannot yet stand behind say
-          &ldquo;not reported&rdquo; and give the reason. The product is not yet released, so
-          there is no public code or live version to link yet.
-        </figcaption>
-      </figure>
-
-      <div class="prose">
-        <p>
-          Before the internships came my Technology &amp; Information Management final project
-          at UC Santa Cruz: a 162-page supply-chain design for a hypothesized Honeywell
-          &ldquo;Distributed Wireless&rdquo; home security system, written with six classmates.
-          It defines the product's architecture and subsystems, forecasts demand, and maps the
-          supplier, manufacturing, and distribution network end to end. It is coursework built
-          around a hypothetical product, not work done for Honeywell.
-        </p>
-        <ul class="link-list">
-          <li><a href="files/honeywell-supply-chain-project.pdf">Read the full project (PDF, 7&nbsp;MB)</a></li>
-        </ul>
-      </div>
     </section>
 
     <section id="about" class="section">
@@ -158,20 +224,48 @@
       </div>
       <div class="prose">
         <p>
-          I am an AI engineering intern at Kool Quarters and Data Scientist intern at IDX Exchange.
+          I am an AI engineering intern at Kool Quarters, where I work on data pipelines and the
+          interfaces that sit on top of them: scraping, metrics that admit what they cannot
+          compute, and the pages that show them.
         </p>
         <p>
-          Before my internships, I studied computer science and technology information management at University of California, Santa Cruz, where I majorly focused on 
-          Human Computer Interaction research projects, product design, and website development. I am early in my career and I learn in public, which is most of why this page
-          exists.
+          In 2026 I completed a data science internship at IDX Exchange, building and evaluating
+          models that predict what California homes sell for, and shipping the result as a
+          Streamlit app.
         </p>
+        <p>
+          Before the internships I studied computer science and technology information management
+          at the University of California, Santa Cruz, focused on human-computer interaction
+          research, product design, and web development. I am early in my career and I learn in
+          public, which is most of why this page exists.
+        </p>
+
+        <h3>Before the internships</h3>
+        <p>
+          My Technology &amp; Information Management final project at UC Santa Cruz: a 162-page
+          supply-chain design for a hypothesized Honeywell &ldquo;Distributed Wireless&rdquo; home
+          security system, written with six classmates. It defines the product's architecture and
+          subsystems, forecasts demand, and maps the supplier, manufacturing, and distribution
+          network end to end. It is coursework built around a hypothetical product, not work done
+          for Honeywell.
+        </p>
+        <ul class="link-list">
+          <li><a href="files/honeywell-supply-chain-project.pdf">Read the full project (PDF, 7&nbsp;MB)</a></li>
+        </ul>
+
         <h3>Tools I work with</h3>
         <ul class="tag-list">
           <li>Python</li>
+          <li>SQL</li>
           <li>TypeScript</li>
           <li>React</li>
+          <li>Next.js</li>
+          <li>FastAPI</li>
           <li>Postgres</li>
+          <li>Supabase</li>
           <li>Pandas</li>
+          <li>LightGBM</li>
+          <li>Streamlit</li>
           <li>Git</li>
         </ul>
       </div>
@@ -185,13 +279,14 @@
         <p>LinkedIn is the best place to reach me. I read messages there and reply to most of them.</p>
         <ul class="link-list">
           <li><a href="https://www.linkedin.com/in/vivian-k-nguyen" rel="me noopener">Connect with me on LinkedIn</a></li>
+          <li><a href="files/resume.pdf">Download my resume (PDF)</a></li>
         </ul>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>Built by hand, no framework. <a href="https://github.com/iviang" rel="noopener">Source on GitHub</a>.</p>
+    <p>Built by hand, no framework. <a href="https://github.com/iviang/iviang.github.io" rel="noopener">Source on GitHub</a>.</p>
   </footer>
 
   <script src="js/projects.js"></script>
