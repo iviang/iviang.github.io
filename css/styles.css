@@ -19,6 +19,9 @@
   --color-accent-contrast: #ffffff;
   --color-highlight: #d41d1d;
   --color-focus: #2563eb;
+  /* LinkedIn's brand blue, for the badge on the About photo only. Same in both themes. */
+  --color-linkedin: #0a66c2;
+  --color-linkedin-contrast: #ffffff;
 
   /* Type */
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -175,6 +178,24 @@ main,
 }
 .hero__highlight { color: var(--color-highlight); }
 .hero__lede { font-family: var(--font-ui); }
+/* Profile chips: GitHub and LinkedIn in one row under the lede. */
+.hero__profiles { display: flex; flex-wrap: wrap; gap: var(--space-xs); margin-top: var(--space-md); }
+.hero__profiles a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  min-height: 2rem;
+  padding: 0 var(--space-sm);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--size-step--1);
+  text-decoration: none;
+  transition: border-color var(--transition-fast);
+}
+.hero__profiles a:hover { border-color: var(--color-accent); }
+.hero__profiles svg { flex-shrink: 0; }
 
 .section { padding-block: var(--space-xl); border-top: var(--border-width) solid var(--color-border); }
 .section__head { margin-bottom: var(--space-lg); }
@@ -267,14 +288,21 @@ main,
   accessible, and a closed iframe with loading="lazy" never fetches until opened.
 */
 .work__demo { margin-top: var(--space-md); }
-.work__demo summary {
+/* The same fold at section level, e.g. the coursework list under Course projects. */
+.section__fold { margin-top: var(--space-lg); }
+.work__demo summary,
+.section__fold summary {
   width: fit-content;
   cursor: pointer;
   color: var(--color-accent);
   font-size: var(--size-step--1);
 }
-.work__demo summary:hover { text-decoration: underline; }
-.work__demo[open] summary { margin-bottom: var(--space-sm); }
+.work__demo summary:hover,
+.section__fold summary:hover { text-decoration: underline; }
+.work__demo[open] summary,
+.section__fold[open] summary { margin-bottom: var(--space-sm); }
+/* An image folded under a summary sits right below it; the summary already spaces it. */
+.work__demo .work__image { margin-top: 0; }
 
 /* Tools: grouped tag lists in a grid that folds to one column on a phone. */
 .tools { display: flex; flex-direction: column; gap: var(--space-md); margin-bottom: var(--space-xl); }
@@ -358,6 +386,51 @@ main,
 @media (max-width: 40rem) {
   .timeline__item { grid-template-columns: 1fr; gap: var(--space-2xs); }
   .timeline__date { padding-left: 1.75rem; }
+}
+
+/* About: the story on the left, the headshot on the right, stacked on a phone. */
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 20rem;
+  gap: var(--space-xl);
+  align-items: start;
+}
+.about__text { max-width: 31rem; font-family: var(--font-ui); font-size: 1.0625rem; }
+.about__text p + p { margin-top: var(--space-md); }
+.about__aside { font-size: 0.8125rem; color: var(--color-text-muted); }
+/* The photo is one big link to LinkedIn; the badge in its corner says where it goes. */
+.about__photo {
+  position: relative;
+  display: block;
+  width: 20rem;
+  max-width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+.about__photo img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: var(--border-width) solid var(--color-border);
+}
+.about__badge {
+  position: absolute;
+  right: 1.375rem;
+  bottom: 1.375rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  border: 0.1875rem solid var(--color-bg);
+  background: var(--color-linkedin);
+  color: var(--color-linkedin-contrast);
+}
+@media (max-width: 48rem) {
+  .about { grid-template-columns: 1fr; gap: var(--space-lg); }
+  .about__photo { order: -1; }
 }
 
 /* Screen-reader-only text, e.g. "(opens in a new tab)" after an external link. */
@@ -483,6 +556,38 @@ main,
   color: var(--color-text-muted);
   font-size: var(--size-step--1);
 }
+
+/* Contact form: posts to Formspree, so the site stays static and holds no secret. */
+.contact-form { display: grid; gap: var(--space-md); max-width: var(--measure); }
+.contact-form__field { display: grid; gap: 0.375rem; }
+.contact-form label { font-size: var(--size-step--1); font-weight: 700; }
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.625rem var(--space-sm);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+}
+.contact-form textarea { resize: vertical; }
+/* Formspree's honeypot field. Bots fill it, people never see it. */
+.contact-form__gotcha { display: none; }
+.contact-form__submit {
+  justify-self: start;
+  min-height: 2.75rem; /* 44px touch target */
+  padding: 0 var(--space-md);
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: filter var(--transition-fast);
+}
+.contact-form__submit:hover { filter: brightness(0.92); }
 
 .site-footer {
   padding-block: var(--space-lg) var(--space-xl);

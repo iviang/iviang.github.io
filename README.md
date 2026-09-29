@@ -7,12 +7,13 @@ strip below it loads public repositories from the GitHub API at page load.
 ## Files
 
 ```
-index.html        Home: hero, tools, selected work, course projects, writing, GitHub strip, contact
-about.html        Relevant coursework
+index.html        Home: hero, tools, selected work, course projects (with the coursework list
+                  folded under them), writing, GitHub strip, contact links and form
+about.html        A short life story and the headshot, which links to LinkedIn
 experience.html   Timeline of roles, leadership, and milestones
 css/styles.css    Design tokens at the top, everything else references them
 js/projects.js    Fetches and renders the "More on GitHub" cards (home page only)
-img/              Favicon, share image (og-image.png), project screenshots, the poster image
+img/              Favicon, share image (og-image.png), headshot, project screenshots, the poster
 files/            Resume, project PDFs, and the Twine story export linked from the pages
 ```
 
@@ -35,6 +36,14 @@ Each card is a `<li class="work">` in `index.html`: a title, a row of tags, a de
 optional note, links, and an optional `<details class="work__demo">` that folds out an iframe or a
 screenshot. Copy an existing card to add one. Cards are ordered by hand, so put the strongest
 first.
+
+## The contact form
+
+The form at the bottom of the home page posts to Formspree, which emails the message on. The
+form ID sits in the form's `action` attribute and is meant to be public. Formspree activates a
+new form after its first submission is confirmed from the receiving inbox, so send yourself a
+test message after changing it. The page's Content-Security-Policy allows form posts to
+formspree.io only; a different provider needs that `form-action` line changed too.
 
 ## Change what shows in More on GitHub
 
