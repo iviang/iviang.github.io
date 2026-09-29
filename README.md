@@ -7,12 +7,16 @@ strip below it loads public repositories from the GitHub API at page load.
 ## Files
 
 ```
-index.html        Page content and structure, including the hand-written Selected work cards
+index.html        Home: hero, tools, selected work, course projects, writing, GitHub strip, contact
+about.html        Relevant coursework
+experience.html   Timeline of roles, leadership, and milestones
 css/styles.css    Design tokens at the top, everything else references them
-js/projects.js    Fetches and renders the "More on GitHub" cards
-img/              Favicon, share image (og-image.png), and the z-scraper screenshot
-files/            Documents linked from the page: resume.pdf and the university final project PDF
+js/projects.js    Fetches and renders the "More on GitHub" cards (home page only)
+img/              Favicon, share image (og-image.png), project screenshots, the poster image
+files/            Resume, project PDFs, and the Twine story export linked from the pages
 ```
+
+The header nav is repeated by hand in each of the three pages, so a new link goes in all three.
 
 ## Run it locally
 
@@ -25,7 +29,7 @@ python -m http.server 8000
 
 Then visit http://localhost:8000
 
-## Change the Selected work cards
+## Change the Selected work, Course projects, and Case studies cards
 
 Each card is a `<li class="work">` in `index.html`: a title, a row of tags, a description, an
 optional note, links, and an optional `<details class="work__demo">` that folds out an iframe or a
