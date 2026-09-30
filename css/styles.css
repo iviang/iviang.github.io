@@ -546,6 +546,18 @@ main,
   height: auto;
 }
 
+/* Stand-in box for a demo whose screenshot is not ready yet. */
+.demo__placeholder {
+  display: grid;
+  place-items: center;
+  min-height: 16rem;
+  padding: var(--space-md);
+  background: var(--color-surface-muted);
+  color: var(--color-text-muted);
+  font-size: var(--size-step--1);
+  text-align: center;
+}
+
 .demo__caption {
   padding: var(--space-sm) var(--space-md);
   border-top: var(--border-width) solid var(--color-border);
